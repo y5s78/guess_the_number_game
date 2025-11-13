@@ -20,7 +20,6 @@ def play_game():
     Runs a single round of the Guess the Number game.
     The player tries to guess a randomly generated number.
     """
-    # Get number range based on difficulty
     low, high = choose_difficulty()
     number = random.randint(low, high)
 
@@ -42,5 +41,17 @@ def play_game():
 
     print(f"Congratulations! You guessed it in {attempts} attempts.")
 
+def main():
+    """
+    Main loop to allow the player to replay the game.
+    """
+    while True:
+        play_game()
+        again = input("\nWould you like to play again? (y/n): ").lower()
+        if again != "y":
+            print("Thanks for playing!")
+            break
+
+# Entry point of the program
 if __name__ == "__main__":
-    play_game()
+    main()
