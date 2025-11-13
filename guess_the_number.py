@@ -1,40 +1,46 @@
-# Import the random module to generate a random number
 import random
+
+def choose_difficulty():
+    """
+    Lets the player choose a difficulty level.
+    Each level sets a different range for the random number.
+    """
+    print("Choose difficulty: easy, medium, or hard")
+    level = input("Difficulty: ").lower()
+
+    if level == "easy":
+        return 1, 50
+    elif level == "hard":
+        return 1, 200
+    else:
+        return 1, 100  # Default is medium
 
 def play_game():
     """
     Runs a single round of the Guess the Number game.
     The player tries to guess a randomly generated number.
     """
-    # Generate a random number between 1 and 100
-    number = random.randint(1, 100)
+    # Get number range based on difficulty
+    low, high = choose_difficulty()
+    number = random.randint(low, high)
 
-    # Welcome message
-    print("Welcome to Guess the Number!")
-
-    # Initialize variables
+    print(f"\nI'm thinking of a number between {low} and {high}. Can you guess it?")
     guess = None
-    attempts = 0  # Track how many guesses the player makes
+    attempts = 0
 
-    # Loop until the player guesses correctly
     while guess != number:
         try:
-            # Prompt the player to enter a guess
-            guess = int(input("Enter your guess (1–100): "))
-            attempts += 1  # Increment attempt count
+            guess = int(input("Enter your guess: "))
+            attempts += 1
 
-            # Provide feedback based on the guess
             if guess < number:
                 print("Too low.")
             elif guess > number:
                 print("Too high.")
         except ValueError:
-            # Handle non-integer input gracefully
             print("Please enter a valid number.")
 
-    # Congratulate the player and show attempt count
     print(f"Congratulations! You guessed it in {attempts} attempts.")
 
-# Entry point of the program
 if __name__ == "__main__":
     play_game()
