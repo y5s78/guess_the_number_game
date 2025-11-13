@@ -1,3 +1,6 @@
+# Guess the Number Game
+# A simple Python game where the player tries to guess a randomly generated number.
+
 import random
 
 def choose_difficulty():
@@ -17,8 +20,8 @@ def choose_difficulty():
 
 def play_game():
     """
-    Runs a single round of the Guess the Number game.
-    The player tries to guess a randomly generated number.
+    Runs a single round of the game.
+    The player guesses until they find the correct number.
     """
     low, high = choose_difficulty()
     number = random.randint(low, high)
@@ -39,7 +42,7 @@ def play_game():
         except ValueError:
             print("Please enter a valid number.")
 
-    print(f"Congratulations! You guessed it in {attempts} attempts.")
+    print(f"🎉 Congratulations! You guessed it in {attempts} attempts.")
 
 def main():
     """
